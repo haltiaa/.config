@@ -1,0 +1,24 @@
+theme = "kanabox"
+
+[editor]
+true-color = true
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.lsp]
+display-inlay-hints = true
+
+[keys.normal.space]
+C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
+
+
+# [keys.normal]
+# C-y = [
+#   ':sh rm -f /tmp/unique-file',
+#   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+#   ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+#   ':open %sh{cat /tmp/unique-file}',
+#   ':redraw',
+# ]

@@ -3,6 +3,15 @@ theme = "kanabox"
 [editor]
 true-color = true
 end-of-line-diagnostics = "hint"
+bufferline = "multiple"
+default-line-ending = "lf"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
+parents = false
 
 [editor.inline-diagnostics]
 cursor-line = "warning"

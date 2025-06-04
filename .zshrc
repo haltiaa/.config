@@ -162,6 +162,7 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 eval "$(zoxide init zsh)"
 alias cd='z'
 
+# ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 ZELLIJ_AUTO_ATTACH=true
 eval "$(zellij setup --generate-auto-start zsh)"
 

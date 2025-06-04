@@ -71,9 +71,13 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions ssh-agent keychain tmux conda-env)
+if [[ $(uname) != "Darwin" ]]; then
+    plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions ssh-agent keychain tmux conda-env)
+    zstyle :omz:plugins:keychain agents ssh
+else
+    plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions conda-env)
+fi
 
-zstyle :omz:plugins:keychain agents ssh
 # ZSH_TMUX_AUTOSTART=true
 
 export FZF_DEFAULT_OPTS="--height=80% --preview 'fzf-preview.sh {}'"

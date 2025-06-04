@@ -136,7 +136,9 @@ export EDITOR='hx'
 # Example aliases
 alias zshconfig="hx ~/.zshrc"
 alias ohmyzsh="hx ~/.oh-my-zsh"
-alias bat='batcat'
+if [[ $(uname) != "Darwin" ]]; then
+    alias bat='batcat'
+fi
 alias catcat='cat'
 alias cat='bat'
 alias ls='eza -ha --grid --group-directories-first --classify=always --git --color=always --icons'

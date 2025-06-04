@@ -172,6 +172,9 @@ alias cd='z'
 ZELLIJ_AUTO_ATTACH=true
 eval "$(zellij setup --generate-auto-start zsh)"
 
+if [[ $(uname) == "Darwin" ]]; then
+    export SSH_AUTH_SOCK=/Users/haltia/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
+fi
 
 cd ~
 

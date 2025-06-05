@@ -74,20 +74,23 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 if [[ $(uname) != "Darwin" ]]; then
     plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions ssh-agent keychain tmux conda-env)
     zstyle :omz:plugins:keychain agents ssh
+    export FZF_DEFAULT_OPTS="--height=80% --preview 'fzf-preview.sh {}' --ansi"
+    export FZF_DEFAULT_COMMAND='fdfind --type file --type l --type d --follow --hidden --color=always --exclude .git --exclude .cache'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 else
     plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions conda-env)
+    export FZF_DEFAULT_OPTS="--height=80% --preview 'fzf-preview.sh {}'" 
 fi
 
 # ZSH_TMUX_AUTOSTART=true
 
-export FZF_DEFAULT_OPTS="--height=80% --preview 'fzf-preview.sh {}'"
 
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 zstyle ':fzf-tab:*' fzf-preview 'less ${(Q)realpath}'
 export LESSOPEN='|~/.lessfilter %s'
 
-zstyle ':fzf-tab:*' popup-min-size 120 40
+# zstyle ':fzf-tab:*' popup-min-size 120 40
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # zstyle ':completion:*' menu no
@@ -113,8 +116,9 @@ export LESS='--mouse --wheel-lines=3'
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-PATH=$PATH:/home/halti/.local/bin
-
+if [[ $(uname) != "Darwin" ]]; then
+    PATH=$PATH:/home/halti/.local/bin
+fi
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -150,23 +154,28 @@ alias y='yazi'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/halti/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/halti/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/halti/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/halti/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/home/halti/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/halti/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/halti/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/halti/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 eval "$(zoxide init zsh)"
 alias cd='z'
+
+if type uv > /dev/null; then
+    eval "$(uv generate-shell-completion zsh)"
+    eval "$(uvx --generate-shell-completion zsh)"
+fi
 
 # ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 ZELLIJ_AUTO_ATTACH=true

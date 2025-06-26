@@ -4,7 +4,7 @@
 
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl z" { SwitchToMode "normal"; }
+        bind "Ctrl b" { SwitchToMode "normal"; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
@@ -144,7 +144,7 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
-        bind "Ctrl z" { SwitchToMode "locked"; }
+        bind "Ctrl b" { SwitchToMode "locked"; }
         bind "Alt q" { MoveTab "left"; }
         bind "Alt m" { NewPane; }
         bind "Alt w" { MoveTab "right"; }

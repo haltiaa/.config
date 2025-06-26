@@ -1,4 +1,5 @@
-theme = "kanabox"
+# theme = "kanabox"
+theme = "kanagawa"
 
 [editor]
 true-color = true

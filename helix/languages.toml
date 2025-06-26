@@ -1,40 +1,38 @@
 
+# PYTHON
 [[language]]
 name = "python"
-scope = "source.python"
-injection-regex = "python"
 file-types = ["py","pyi","py3","pyw",".pythonstartup",".pythonrc"]
 shebangs = ["python"]
-roots = [".", "pyproject.toml", "pyrightconfig.json"]
+roots = [".", "pyproject.toml", "pyrightconfig.json", ".venv/"]
 comment-token = "#"
-language-servers = ["pyright", "ruff"]
+# language-servers = [ "basedpyright", "ruff" ]
+language-servers = [ "basedpyright" ]
 indent = { tab-width = 4, unit = "    " }
-# auto-format = true
+auto-format = true
 
-# [language.formatter]
-# command = "black"
-# args = [
-#   "-",
-#   "--quiet",
-#   "--line-length=88"
-# ]
+[language.formatter]
+command = "ruff"
+args = [
+  "format",
+  "-"
+]
 
-[language-server.pyright]
-command = "pyright-langserver"
+[language-server.basedpyright]
+command = "basedpyright-langserver"
 args = ["--stdio"]
+except-features = ["format", "code-action"]
 
-[language-server.pyright.config]
-reportMissingTypeStubs = false
+[language-server.basedpyright.config.basedpyright.analysis]
+autoSearchPaths = true
+# typeCheckingMode = "basic"
+# diagnosticMode = "openFilesOnly"
 
-[language-server.pyright.config.python.analysis]
-typeCheckingMode = "basic"
-autoImportCompletions = true
+# [language-server.ruff]
+# # command = "ruff-lsp"
+# command = "ruff"
+# args = ["server", "-q", "--preview"]
 
-[language-server.ruff]
-command = "ruff-lsp"
-
-[language-server.ruff.config]
-settings = {args = []}
 
 # TYPST
 [[language]]

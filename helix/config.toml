@@ -6,6 +6,7 @@ true-color = true
 end-of-line-diagnostics = "hint"
 bufferline = "multiple"
 default-line-ending = "lf"
+default-yank-register = "+"
 
 [editor.cursor-shape]
 insert = "bar"

@@ -15,7 +15,7 @@ layout {
             y "5%"
         }
     }
-    pane borderless=true
+    pane //borderless=true
     pane size=1 borderless=true {
         plugin location="status-bar"
     }

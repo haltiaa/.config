@@ -284,6 +284,7 @@ simplified_ui true
 // Default: default
 // 
 // theme "dracula"
+theme "kanagawa"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -328,7 +329,7 @@ default_layout "altered"
 //   - true (default, enabled)
 //   - false
 // 
-pane_frames false
+// pane_frames false
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)

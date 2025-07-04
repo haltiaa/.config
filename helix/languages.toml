@@ -11,12 +11,18 @@ language-servers = [ "basedpyright" ]
 indent = { tab-width = 4, unit = "    " }
 auto-format = true
 
+
 [language.formatter]
-command = "ruff"
-args = [
-  "format",
-  "-"
-]
+# command = "ruff"
+# args = [
+#   "format",
+#   "-"
+# ]
+command = "zsh"
+args = ["-c", "ruff check --select I --fix - | ruff format -"]
+
+
+
 
 [language-server.basedpyright]
 command = "basedpyright-langserver"

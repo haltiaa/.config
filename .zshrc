@@ -119,6 +119,10 @@ export LESS='--mouse --wheel-lines=3'
 if [[ $(uname) != "Darwin" ]]; then
     PATH=$PATH:/home/halti/.local/bin
 fi
+
+if [[ $(uname) == "Darwin" ]]; then
+    PATH=$PATH:/Users/haltia/.local/bin
+fi
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 

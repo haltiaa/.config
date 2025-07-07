@@ -5,3 +5,9 @@
 
 enchant
 uv/uv-receipt.json
+
+.DS_Store
+
+*.ini
+
+karabiner

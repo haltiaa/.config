@@ -11,3 +11,6 @@ uv/uv-receipt.json
 *.ini
 
 karabiner
+dconf
+gedit
+pudb

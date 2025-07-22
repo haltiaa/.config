@@ -72,13 +72,13 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [[ $(uname) != "Darwin" ]]; then
-    plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions ssh-agent keychain tmux conda-env)
+    plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions ssh-agent keychain conda-env)
     zstyle :omz:plugins:keychain agents ssh
     export FZF_DEFAULT_OPTS="--height=80% --preview 'fzf-preview.sh {}' --ansi"
     export FZF_DEFAULT_COMMAND='fdfind --type file --type l --type d --follow --hidden --color=always --exclude .git --exclude .cache'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 else
-    plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions conda-env)
+    plugins=(git fzf fzf-tab fzf-tab-source zsh-autosuggestions)
     export FZF_DEFAULT_OPTS="--height=80% --preview 'fzf-preview.sh {}'" 
 fi
 
@@ -182,13 +182,14 @@ if type uv > /dev/null; then
 fi
 
 # ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
-ZELLIJ_AUTO_ATTACH=true
-eval "$(zellij setup --generate-auto-start zsh)"
 
 if [[ $(uname) == "Darwin" ]]; then
     export SSH_AUTH_SOCK=/Users/haltia/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
 fi
 
 cd ~
+
+ZELLIJ_AUTO_ATTACH=true
+# eval "$(zellij setup --generate-auto-start zsh)"
 
 # [ -f "/home/halti/.ghcup/env" ] && . "/home/halti/.ghcup/env" # ghcup-env

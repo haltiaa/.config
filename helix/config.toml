@@ -21,6 +21,10 @@ cursor-line = "warning"
 [editor.lsp]
 display-inlay-hints = true
 
+[editor.soft-wrap]
+enable = true
+
+
 [keys.normal.space]
 C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
 

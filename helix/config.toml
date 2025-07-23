@@ -1,4 +1,3 @@
-# theme = "kanabox"
 theme = "kanagawa"
 
 [editor]
@@ -7,6 +6,8 @@ end-of-line-diagnostics = "hint"
 bufferline = "multiple"
 default-line-ending = "lf"
 default-yank-register = "+"
+completion-trigger-len = 1
+
 
 [editor.cursor-shape]
 insert = "bar"
@@ -24,6 +25,9 @@ display-inlay-hints = true
 [editor.soft-wrap]
 enable = true
 
+[keys.normal]
+tab = "goto_next_function"
+S-tab = "goto_prev_function"
 
 [keys.normal.space]
 C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]

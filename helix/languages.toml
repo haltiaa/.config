@@ -22,8 +22,6 @@ command = "zsh"
 args = ["-c", "ruff check --select I --fix - | ruff format -"]
 
 
-
-
 [language-server.basedpyright]
 command = "basedpyright-langserver"
 args = ["--stdio"]
@@ -50,6 +48,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["tinymist"]
 indent = { tab-width = 4, unit = "    " }
+auto-format = true
 
 [language.auto-pairs]
 '(' = ')'
@@ -60,8 +59,54 @@ indent = { tab-width = 4, unit = "    " }
 
 [language-server.tinymist]
 command = "tinymist"
-config = { exportPdf = "onType" }
+config = { preview.background.enabled = true, preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"]}
+formatterMode = "typstyle"
 
 [[grammar]]
 name = "typst"
-source = { git = "https://github.com/uben0/tree-sitter-typst", rev = "13863ddcbaa7b68ee6221cea2e3143415e64aea4" }
+source = { git = "https://github.com/uben0/tree-sitter-typst", rev = "master" }
+
+
+[[language]]
+name = "latex"
+scope = "source.tex"
+injection-regex = "tex"
+file-types = ["tex", "sty", "cls", "Rd", "bbx", "cbx"]
+comment-token = "%"
+language-servers = [ "texlab" ]
+indent = { tab-width = 4, unit = "\t" }
+
+[language.auto-pairs]
+'$' = '$'
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+"'" = "'"
+
+[language-server.texlab.config.texlab.chktex]
+onOpenAndSave = true
+onEdit = true
+
+# [language-server.texlab.config.texlab.forwardSearch]
+# executable = "zathura"
+# args = [ "--synctex-forward", "%l:%c:%f", "%p" ]
+
+[language-server.texlab.config.texlab.build]
+# auxDirectory = "build"
+# logDirectory = "build"
+# pdfDirectory = "build"
+onSave = true
+
+executable = "tectonic"
+args = [
+ "-X",
+ "compile",
+ "%f",
+ "--keep-logs",
+ "--keep-intermediates",
+ "--synctex",
+ ]
+# forwardSearchAfter = true
+ # "--outdir=build",
+

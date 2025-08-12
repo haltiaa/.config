@@ -19,7 +19,10 @@ layout {
     }
     pane //borderless=true
     pane size=1 borderless=true {
-        plugin location="status-bar"
+        // plugin location="status-bar"
+        plugin location="zellij:compact-bar" {
+            tooltip "F1"
+        }
     }
 }
 

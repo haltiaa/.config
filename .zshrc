@@ -185,6 +185,7 @@ fi
 
 if [[ $(uname) == "Darwin" ]]; then
     export SSH_AUTH_SOCK=/Users/haltia/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
+    export XDG_CONFIG_HOME="$HOME/.config"
 fi
 
 cd ~

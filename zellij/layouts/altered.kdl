@@ -6,8 +6,14 @@
 
 
 layout {
+    // pane size=1 borderless=true {
+    //     plugin location="tab-bar"
+    // }
     pane size=1 borderless=true {
-        plugin location="tab-bar"
+        // plugin location="status-bar"
+        plugin location="zellij:compact-bar" {
+            tooltip "F1"
+        }
     }
     floating_panes {
         pane {
@@ -18,12 +24,12 @@ layout {
         }
     }
     pane //borderless=true
-    pane size=1 borderless=true {
-        // plugin location="status-bar"
-        plugin location="zellij:compact-bar" {
-            tooltip "F1"
-        }
-    }
+    // pane size=1 borderless=true {
+    //     // plugin location="status-bar"
+    //     plugin location="zellij:compact-bar" {
+    //         tooltip "F1"
+    //     }
+    // }
 }
 
 

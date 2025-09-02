@@ -1,0 +1,12 @@
+
+
+
+[diff]
+	# tool = difft
+	external = difft
+
+# [difftool "difft"]
+	# cmd = difft --color=always --display=inline
+
+
+

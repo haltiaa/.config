@@ -7,6 +7,7 @@ bufferline = "multiple"
 default-line-ending = "lf"
 default-yank-register = "+"
 completion-trigger-len = 1
+line-number = "relative"
 
 
 [editor.cursor-shape]
@@ -31,6 +32,12 @@ S-tab = "goto_prev_function"
 
 [keys.normal.space]
 C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
+y = [":yank-join"]
+
+[keys.normal.space.c]
+c = ":buffer-close"
+C = ":buffer-close-others"
+
 
 
 # [keys.normal]

@@ -9,27 +9,31 @@ layout {
     // pane size=1 borderless=true {
     //     plugin location="tab-bar"
     // }
-    pane size=1 borderless=true {
-        // plugin location="status-bar"
-        plugin location="zellij:compact-bar" {
-            tooltip "F1"
+    default_tab_template {
+        pane size=1 borderless=true {
+            // plugin location="status-bar"
+            plugin location="zellij:compact-bar" {
+                tooltip "F1"
+            }
         }
+        children
     }
-    floating_panes {
-        pane {
-            height "90%"
-            y "5%"
-            width "90%"
-            x "5%"
-        }
-    }
-    pane //borderless=true
+    // floating_panes {
+    //     pane {
+    //         height "90%"
+    //         y "5%"
+    //         width "90%"
+    //         x "5%"
+    //     }
+    // }
+    // pane //borderless=true
     // pane size=1 borderless=true {
     //     // plugin location="status-bar"
     //     plugin location="zellij:compact-bar" {
     //         tooltip "F1"
     //     }
     // }
+    //
 }
 
 

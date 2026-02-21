@@ -137,6 +137,12 @@ export EDITOR='hx'
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+autoload zmv
+
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
@@ -153,7 +159,7 @@ if [[ $(uname) != "Darwin" ]]; then
 fi
 alias catcat='cat'
 alias cat='bat'
-alias ls='eza -ha --grid --group-directories-first --classify=always --git --color=always --icons'
+alias ls='eza -ha --grid --group-directories-first --classify=always --git --color=always --icons=always'
 alias y='yazi'
 
 # >>> conda initialize >>>
@@ -172,6 +178,8 @@ alias y='yazi'
 # <<< conda initialize <<<
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+# eval "$(starship init zsh)"
+
 
 eval "$(zoxide init zsh)"
 alias cd='z'

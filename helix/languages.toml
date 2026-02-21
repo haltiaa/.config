@@ -1,4 +1,26 @@
 
+
+
+
+#SPELLCHECK
+
+
+
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+
+
+
+
+# [language-server.harper-ls.config.harper-ls]
+
+
+
+
+
+
+
 # PYTHON
 [[language]]
 name = "python"
@@ -8,6 +30,7 @@ roots = [".", "pyproject.toml", "pyrightconfig.json", ".venv/"]
 comment-token = "#"
 # language-servers = [ "basedpyright", "ruff" ]
 language-servers = [ "basedpyright" ]
+# language-servers = ["ty"]
 indent = { tab-width = 4, unit = "    " }
 auto-format = true
 
@@ -29,6 +52,7 @@ except-features = ["format", "code-action"]
 
 [language-server.basedpyright.config.basedpyright.analysis]
 autoSearchPaths = true
+typeCheckingMode = "standard"
 # typeCheckingMode = "basic"
 # diagnosticMode = "openFilesOnly"
 
@@ -36,6 +60,10 @@ autoSearchPaths = true
 # # command = "ruff-lsp"
 # command = "ruff"
 # args = ["server", "-q", "--preview"]
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
 
 
 # TYPST
@@ -49,6 +77,7 @@ block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["tinymist"]
 indent = { tab-width = 4, unit = "    " }
 auto-format = true
+formatter.command = "typstyle"
 
 [language.auto-pairs]
 '(' = ')'
@@ -59,7 +88,8 @@ auto-format = true
 
 [language-server.tinymist]
 command = "tinymist"
-config = { preview.background.enabled = true, preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"]}
+config = { preview.background.enabled = true, preview.background.args = ["--data-plane-host=127.0.0.1:23636", "--invert-colors=never", "--open"], exportPdf = "onSave"}
+# config = { preview.background.enabled = true, preview.background.args = ["--open"], exportPdf = "onSave"}
 formatterMode = "typstyle"
 
 [[grammar]]
@@ -98,15 +128,54 @@ onEdit = true
 # pdfDirectory = "build"
 onSave = true
 
-executable = "tectonic"
+# executable = "tectonic"
+# args = [
+#  "-X",
+#  "compile",
+#  "%f",
+#  "--keep-logs",
+#  "--keep-intermediates",
+#  "--synctex",
+#  ]
+# forwardSearchAfter = true
+executable = "latexmk"
 args = [
- "-X",
- "compile",
- "%f",
- "--keep-logs",
- "--keep-intermediates",
- "--synctex",
+ "-pdf",
+  "-interaction=nonstopmode",
+  "-synctex=1",
+  "-shell-escape",
+  "%f"
  ]
+
+
 # forwardSearchAfter = true
  # "--outdir=build",
+
+
+
+
+# [[language]]
+# name = "markdown"
+# scope = "source.md"
+# injection-regex = "md|markdown"
+# file-types = ["md", "livemd", "markdown", "mdx", "mkd", "mkdn", "mdwn", "mdown", "markdn", "mdtxt", "mdtext", "workbook", { glob = "PULLREQ_EDITMSG" }]
+# roots = [".marksman.toml"]
+# language-servers = [ "marksman", "markdown-oxide", "rumdl", "harper-ls" ]
+# indent = { tab-width = 2, unit = "  " }
+# block-comment-tokens = { start = "<!--", end = "-->" }
+# word-completion.trigger-length = 4
+
+# [language.auto-pairs]
+# '(' = ')'
+# '{' = '}'
+# '[' = ']'
+# '"' = '"'
+# "'" = "'"
+# '`' = '`'
+# '‘' = '’'
+# '«' = '»'
+# '“' = '”'
+
+
+
 

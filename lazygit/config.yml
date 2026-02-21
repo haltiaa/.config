@@ -1,16 +1,5 @@
-
-
-
-
 git:
   autoFetch: true
-
-  paging:
-    # useExternalDiffGitConfig: true
-    externalDiffCommand: difft --color=always --display=inline
-
-
-
-
-
-
+  pagers:
+    - # useExternalDiffGitConfig: true
+      externalDiffCommand: difft --color=always --display=inline

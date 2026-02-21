@@ -305,7 +305,12 @@ default_mode "normal"
 // Default: "default"
 // 
 default_layout "altered"
- 
+
+// compact-bar location="zellij:compact-bar" { // replace it with these lines
+//     tooltip "F1" // choose a keybinding to toggle the hints
+// }
+// default_layout "compact"
+
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 // 
@@ -330,7 +335,7 @@ default_layout "altered"
 //   - true (default, enabled)
 //   - false
 // 
-// pane_frames false
+pane_frames false
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
@@ -364,7 +369,7 @@ scroll_buffer_size 20000
 // that will be used by default if this option is not set.
 // Examples:
 //
-copy_command "xclip -selection clipboard" // x11
+// copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
 // 
@@ -393,13 +398,13 @@ scrollback_editor "hx"
 // otherwise this will error if such a session exists.
 // Default: <RANDOM>
 // 
-// session_name "My singleton session"
+session_name "ghostty"
  
 // When `session_name` is provided, attaches to that session
 // if it is already running or creates it otherwise.
 // Default: false
 // 
-// attach_to_session true
+attach_to_session true
  
 ui {
     pane_frames {
@@ -427,13 +432,13 @@ ui {
 //   - true
 //   - false (default)
 // 
-// serialize_pane_viewport false
+serialize_pane_viewport true
  
 // Scrollback lines to serialize along with the pane viewport when serializing sessions, 0
 // defaults to the scrollback size. If this number is higher than the scrollback size, it will
 // also default to the scrollback size. This does nothing if `serialize_pane_viewport` is not true.
 // 
-// scrollback_lines_to_serialize 10000
+scrollback_lines_to_serialize 0
  
 // Enable or disable the rendering of styled and colored underlines (undercurl).
 // May need to be disabled for certain unsupported terminals
@@ -444,7 +449,7 @@ ui {
  
 // How often in seconds sessions are serialized
 // 
-// serialization_interval 10000
+serialization_interval 600
  
 // Enable or disable writing of session metadata to disk (if disabled, other sessions might not know
 // metadata info on this session)

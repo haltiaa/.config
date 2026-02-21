@@ -1,5 +1,5 @@
 
-
+# theme = Kanagawabones
 
 font-family = JetBrainsMonoNLNerdFont
 
@@ -10,12 +10,11 @@ window-inherit-font-size = true
 window-width = 140
 window-height = 40
 
+copy-on-select = false
 
 
 
-
-
-
+window-decoration = none
 
 
 

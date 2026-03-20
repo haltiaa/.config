@@ -72,7 +72,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [[ $(uname) != "Darwin" ]]; then
-    plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions ssh-agent keychain conda-env)
+    plugins=(git conda fzf fzf-tab fzf-tab-source zsh-autosuggestions ssh-agent keychain conda-env uv)
     zstyle :omz:plugins:keychain agents ssh
     export FZF_DEFAULT_OPTS="--height=80% --preview 'fzf-preview.sh {}' --ansi"
     export FZF_DEFAULT_COMMAND='fdfind --type file --type l --type d --follow --hidden --color=always --exclude .git --exclude .cache'
@@ -118,6 +118,7 @@ export LESS='--mouse --wheel-lines=3'
 # export MANPATH="/usr/local/man:$MANPATH"
 if [[ $(uname) != "Darwin" ]]; then
     PATH=$PATH:/home/halti/.local/bin
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 fi
 
 if [[ $(uname) == "Darwin" ]]; then
@@ -164,17 +165,17 @@ alias y='yazi'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/halti/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/halti/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/halti/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/halti/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
+__conda_setup="$('/home/halti/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/halti/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/halti/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/halti/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
@@ -184,10 +185,10 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 eval "$(zoxide init zsh)"
 alias cd='z'
 
-if type uv > /dev/null; then
-    eval "$(uv generate-shell-completion zsh)"
-    eval "$(uvx --generate-shell-completion zsh)"
-fi
+# if type uv > /dev/null; then
+#     eval "$(uv generate-shell-completion zsh)"
+#     eval "$(uvx --generate-shell-completion zsh)"
+# fi
 
 # ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 
@@ -202,3 +203,4 @@ ZELLIJ_AUTO_ATTACH=true
 # eval "$(zellij setup --generate-auto-start zsh)"
 
 # [ -f "/home/halti/.ghcup/env" ] && . "/home/halti/.ghcup/env" # ghcup-env
+export GALLIUM_DRIVER=d3d12

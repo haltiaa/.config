@@ -295,7 +295,7 @@ default_mode "normal"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-// default_shell "fish"
+default_shell "zsh"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
@@ -398,7 +398,7 @@ scrollback_editor "hx"
 // otherwise this will error if such a session exists.
 // Default: <RANDOM>
 // 
-session_name "ghostty"
+// session_name "ghostty"
  
 // When `session_name` is provided, attaches to that session
 // if it is already running or creates it otherwise.

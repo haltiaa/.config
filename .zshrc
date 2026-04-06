@@ -226,4 +226,4 @@ ZELLIJ_AUTO_ATTACH=true
 # eval "$(zellij setup --generate-auto-start zsh)"
 
 # [ -f "/home/halti/.ghcup/env" ] && . "/home/halti/.ghcup/env" # ghcup-env
-export GALLIUM_DRIVER=d3d12
+# export GALLIUM_DRIVER=d3d12

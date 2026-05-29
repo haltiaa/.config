@@ -90,6 +90,28 @@ fi
 zstyle ':fzf-tab:*' fzf-preview 'less ${(Q)realpath}'
 export LESSOPEN='|~/.lessfilter %s'
 
+
+
+if [[ $(uname) == "Darwin" ]]; then
+    export SSH_AUTH_SOCK="$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+    export XDG_CONFIG_HOME="$HOME/.config"
+
+    PATH=$PATH:$HOME/.local/bin
+
+    alias tap='taproom'
+
+    # case "$USER" in
+    #     haltia)
+    #         # Add haltia specific logic
+    #         ;;
+    #     haltiaa2)
+    #         # Add haltiaa2 specific logic
+    #         ;;
+    # esac
+fi
+
+
+
 # zstyle ':fzf-tab:*' popup-min-size 120 40
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
@@ -121,9 +143,8 @@ if [[ $(uname) != "Darwin" ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 fi
 
-if [[ $(uname) == "Darwin" ]]; then
-    PATH=$PATH:/Users/haltia/.local/bin
-fi
+# if [[ $(uname) == "Darwin" ]]; then
+# fi
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -140,7 +161,7 @@ export EDITOR='hx'
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^x^e' edit-command-line
+bindkey '^l^e' edit-command-line
 
 autoload zmv
 
@@ -192,10 +213,12 @@ alias cd='z'
 
 # ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 
-if [[ $(uname) == "Darwin" ]]; then
-    export SSH_AUTH_SOCK=/Users/haltia/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
-    export XDG_CONFIG_HOME="$HOME/.config"
-fi
+
+
+# if [[ $(uname) == "Darwin" ]]; then
+#     export SSH_AUTH_SOCK=/Users/haltia/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
+#     export XDG_CONFIG_HOME="$HOME/.config"
+# fi
 
 cd ~
 

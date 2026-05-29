@@ -10,3 +10,7 @@
 
 
 
+[pull]
+	rebase = true
+[user]
+	name = haltiaa

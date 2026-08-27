@@ -391,7 +391,7 @@ scroll_buffer_size 20000
  
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
-scrollback_editor "hx"
+scrollback_editor "helix"
  
 // A fixed name to always give the Zellij session.
 // Consider also setting `attach_to_session true,`

@@ -18,6 +18,13 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    foreground = 'yellow'
+    background = 'transparent'
+    template = '{{ if .Env.APPTAINER_INSTANCE }} {{ .Env.APPTAINER_INSTANCE }} {{ end }}'
+
+  [[blocks.segments]]
     template = '{{ .Path }}'
     foreground = 'blue'
     background = 'transparent'
